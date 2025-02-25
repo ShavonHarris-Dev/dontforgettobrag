@@ -1,0 +1,108 @@
+/* App.css */
+:root {
+  --font-family: 'Arial, sans-serif';
+  --bg-color: #f5f5f5;
+  --container-bg: #fff;
+  --border-radius: 8px;
+  --shadow-color: rgba(0, 0, 0, 0.1);
+  --spacing: 20px;
+  --btn-bg: #007BFF;
+  --btn-text: #fff;
+  --btn-padding: 6px 12px;
+}
+
+body {
+  font-family: var(--font-family);
+  margin: 0;
+  background-color: var(--bg-color);
+}
+
+.wins-tracker {
+  max-width: 400px;
+  margin: var(--spacing) auto;
+  padding: var(--spacing);
+  background-color: var(--container-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 2px 8px var(--shadow-color);
+}
+
+
+/* Header.css */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing);
+}
+
+.actions button {
+  margin-left: 8px;
+  padding: var(--btn-padding);
+  font-size: 0.9rem;
+  cursor: pointer;
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 4px;
+}
+
+
+/* WinForm.css */
+.add-win-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: var(--spacing);
+}
+
+.win-title-input,
+.win-description {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.btn-add {
+  padding: var(--btn-padding);
+  background-color: var(--btn-bg);
+  color: var(--btn-text);
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+/* WinList.css */
+.wins-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.win-card {
+  padding: 15px;
+  background-color: var(--container-bg);
+  border-radius: var(--border-radius);
+  box-shadow: 0 1px 4px var(--shadow-color);
+}
+
+.win-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.win-title {
+  margin: 0;
+}
+
+.win-date {
+  font-size: 0.8rem;
+  color: #666;
+}
+
+.win-description {
+  margin: 0;
+}
+
