@@ -1,5 +1,3 @@
-// import './Header.css'
-
 export function Header() {
   return (
     <div className='wins-tracker celebration-theme'>
