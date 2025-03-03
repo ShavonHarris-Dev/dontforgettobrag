@@ -112,15 +112,15 @@
   margin: 0 0 8px 0;
 }
 
-/* .confetti-container {
+ /* .confetti-container {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  display: none; /* 👈 Hide confetti by default */
-  z-index: -1; /* 👈 Bring it above everything when active */
-  pointer-events: none; /* 👈 Prevent blocking input clicks */
-} */
+  display: none; 
+  z-index: -1; 
+  pointer-events: none; 
+}  */
 
 

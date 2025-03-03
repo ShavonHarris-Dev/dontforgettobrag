@@ -4,14 +4,14 @@ import PropTypes from 'prop-types'
 export function WinForm(  {addWin} ) {
 
     const [accomplishment, setAccomplishment] = useState('')
-
-    console.log(accomplishment)
+    const [description, setDescription] = useState('')
 
     function handleSubmit(e){
         e.preventDefault()
-        if(!accomplishment) return;
-       addWin(accomplishment)
-       setAccomplishment('')
+        if(!accomplishment || !description) return;
+       addWin(accomplishment, description);
+       setAccomplishment('');
+       setDescription('');
     }
 
    
@@ -25,24 +25,22 @@ export function WinForm(  {addWin} ) {
                     placeholder='What did you accomplish today' 
                     value={accomplishment}
                     onChange={(e)=> {
-                        console.log(e.target.value)
                         setAccomplishment(e.target.value)
                     }}
                 />
                 <textarea 
                     className='win-description sparkle-on-focus' 
                     placeholder='Share the details of your achievement...'
+                    value={description}
+                    onChange={(e) => {setDescription(e.target.value)}}
                 ></textarea>
                 <button className='btn-add pulse-animation' onClick={handleSubmit}>Celebrate This Win</button>
-            </div>
-
-            <div className="confetti-container" aria-hidden="true">
-                {/* Confetti animation elements will go here */}
             </div>
         </div>
     );
 }
 
 WinForm.propTypes = {
-    addWin:PropTypes.func.isRequired
+    addWin:PropTypes.func.isRequired,
+    addDescription:PropTypes.func.isRequired
 }

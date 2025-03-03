@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "Tracking Wins",
+  "version": "1.0.0",
+  "description": "A way to boost your confidence and track your wins",
+  "permissions": [
+    "storage",
+    "downloads"
+  ],
+  "background": {
+    "service_worker": "service-worker.js"
+  },
+  "action": {
+    "default_popup": "index.html"
+  }
+}
+
+
+
