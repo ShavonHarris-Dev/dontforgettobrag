@@ -1,13 +1,8 @@
-// build.js - Copy necessary files for Chrome extension
+// build.js - Simple script to copy extension files
 import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import process from 'node:process';
 
 console.log('Starting the build process for the Chrome extension...');
-
-// Get current directory in ES modules
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
 
 // Ensure dist directory exists
 if (!fs.existsSync('dist')) {
@@ -24,40 +19,24 @@ try {
   console.log('Copying service-worker.js to dist folder...');
   fs.copyFileSync('service-worker.js', 'dist/service-worker.js');
   
-  // If you have a popup.html file, copy it too
-  if (fs.existsSync('popup.html')) {
-    console.log('Copying popup.html to dist folder...');
-    fs.copyFileSync('popup.html', 'dist/popup.html');
-  }
-  
-  // If you have a popup.js file, copy it too
-  if (fs.existsSync('popup.js')) {
-    console.log('Copying popup.js to dist folder...');
-    fs.copyFileSync('popup.js', 'dist/popup.js');
-  }
-  
-  // Copy any icons if they exist
-  // First check if there's an icons directory
-  if (fs.existsSync('icons')) {
-    console.log('Copying icons...');
-    if (!fs.existsSync('dist/icons')) {
-      fs.mkdirSync('dist/icons', { recursive: true });
-    }
-    
-    const iconFiles = fs.readdirSync('icons');
-    iconFiles.forEach(file => {
-      fs.copyFileSync(`icons/${file}`, `dist/icons/${file}`);
-    });
-  } else if (fs.existsSync('public/icons')) {
-    console.log('Copying icons from public directory...');
+  // Copy icons from public/icons
+  if (fs.existsSync('public/icons')) {
+    console.log('Copying icons from public/icons directory...');
     if (!fs.existsSync('dist/icons')) {
       fs.mkdirSync('dist/icons', { recursive: true });
     }
     
     const iconFiles = fs.readdirSync('public/icons');
     iconFiles.forEach(file => {
+      console.log(`  Copying icon: ${file}`);
       fs.copyFileSync(`public/icons/${file}`, `dist/icons/${file}`);
     });
+  } else {
+    console.log('No icons found in public/icons directory');
+    console.log('Creating empty icons directory in dist anyway...');
+    if (!fs.existsSync('dist/icons')) {
+      fs.mkdirSync('dist/icons', { recursive: true });
+    }
   }
   
   console.log('Extension files copied successfully!');
